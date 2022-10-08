@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Visualization</title>
+  <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type='text/css'/>
+  <link href="{{ url_for('static', filename='demo.css') }}" rel="stylesheet" type='text/css'/>
+</head>
+
+
+ <div>
+	<h1>BTC価格の推移</h1>
+        
+    <form action="{{ url_for('visualize')}}" method="post">
+        <br>
+        <p>描画したい日時の記入</p>
+        <input type="text" name="number of year" placeholder="年" required="required"/>
+        <input type="text" name="number of month" placeholder="月" required="required"/>
+        <input type="text" name="number of day" placeholder="日" required="required"/>
+        <input type="text" name="number of hour" placeholder="時" required="required"/>
+        <br>
+        <p>表示するスパン(日)</p>
+        <input type="number" name="span" placeholder="1" required="required"/>
+        <button type="submit" class="bn33">グラフを表示</button>
+    </form>
+   <br>
+   <br>
+   <br>
+   {{ message }}
+ </div>
+ <a  href="{{ url_for('index') }}">ホームに戻る</a>
+</html>

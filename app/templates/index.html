@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>BTC Prediction</title>
+  <!-- <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'> -->
+  <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type='text/css'/>
+  <link href="{{ url_for('static', filename='demo.css') }}" rel="stylesheet" type='text/css'/>
+</head>
+
+
+ <div>
+	<h1>マーケットの方向性の予測</h1>
+     <!-- Main Input For Receiving Query to our ML -->
+     <p>{{ update_text }}</p>
+     <a  href="{{ url_for('visualize_date') }}">Visualize</a>
+        
+    <form action="{{ url_for('predict')}}" method="post">
+      <div class="msr_pulldown_04">
+        <p>予測モデル</p>
+        <select name="type">
+            <option>選択してください</option>
+            <option>Logistic Regression</option>
+            <option>Light GBM</option>
+            <option>Wave Net</option>
+        </select>
+      </div>
+        <br>
+        <p>予測したい日時の記入</p>
+        <input type="text" name="number of year" placeholder="年" required="required"/>
+        <input type="text" name="number of month" placeholder="月" required="required"/>
+        <input type="text" name="number of day" placeholder="日" required="required"/>
+        <input type="text" name="number of hour" placeholder="時" required="required"/>
+        <button type="submit" class="bn33">予測する</button>
+    </form>
+   <br>
+   <br>
+   <br>
+   <br>
+   {{ selected_model_text }}
+   <br>
+   <br>
+   {{ prediction_text }}
+   <br>
+   <br>
+   {{ caution_text }}
+ </div>
+</html>
